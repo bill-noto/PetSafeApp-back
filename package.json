@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "buildcss": "tailwind build -i ./core/resources/src/srcstyles.css -o ./core/resources/styles/styles.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
+  }
+}

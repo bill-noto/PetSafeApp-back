@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Open Sans", 'sans-serif';
+    color: #474747;
+}
+
+.top:hover {
+    background-color: rgba(32, 32, 32, 1);
+    border-bottom: 1px solid black;
+    border-radius: 10%;
+    color: white;
+    padding: 8px;
+    transition: background-color 0.5s;
+}
+
+input,
+textarea {
+    border: 1px solid #474747;
+}
+
+.lModal {
+    left: 18.5%;
+}
+
+footer {
+    background-color: #2A3034;
+    color: #B4B1B1;
+}
