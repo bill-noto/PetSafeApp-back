@@ -29,7 +29,6 @@ class Router
 
     public function get($uri, $controller, $auth = false)
     {
-
         $this->routes['GET'][$uri] = $controller;
 
         if ($auth) {

@@ -36,21 +36,17 @@ class AuthController
 
         $user = $_POST;
 
+        $user['first_name'] = ucfirst($user['first_name']);
+
+        $user['last_name'] = ucfirst($user['last_name']);
+
         $user['password'] = md5($user['password']);
 
         App::get('db')->insert('users', $user);
 
         Mail::send($user['email'], 'Welcome', 'From the staff at PetSafe.com, we welcome you, and hope you find our services enjoyable and secure, for you and your pet.');
 
-
-        return view('register-pet', compact('user'));
-    }
-
-    public function showPetForm()
-    {
-        $message = "";
-        
-        return view('register-pet', compact('message'));
+        return redirect('/');
     }
 
     public function showLoginForm()
@@ -87,7 +83,10 @@ class AuthController
 
         $_SESSION['user'] = $user;
 
-        return redirect('logs');
+        if ($user->role == 'admin') {
+            return redirect('admin/logs');
+        }
+        return redirect('user/logs');
     }
 
     public function logout()
