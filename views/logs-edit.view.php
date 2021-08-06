@@ -1,9 +1,9 @@
 <?php require_once 'partials/header.view.php' ?>
 
-    <h1>Edit a Book - <?= $book->title ?></h1>
+    <h1>Edit Log from - <?= date('D d-m-Y', $log->date_requested) ?>, done for <?= $log->for ?>.</h1>
 
 
-    <form action="/books/update" method="POST">
+    <form action="/admin/logs/update" method="POST">
 
     <!--     <div class="form-group">
             <label for="id">ID</label>

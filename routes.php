@@ -18,6 +18,7 @@ $router->get('logout', 'AuthController@logout');
  */
 
 $router->get('admin/logs', 'LogsControllerAdmin@index', 'auth');
+$router->get('admin/logs/past', 'LogsControllerAdmin@indexPast', 'auth');
 $router->get('admin/logs/delete', 'LogsControllerAdmin@destroy', 'auth');
 $router->get('admin/logs/create', 'LogsControllerAdmin@create', 'auth');
 $router->post('admin/logs', 'LogsControllerAdmin@store', 'auth');

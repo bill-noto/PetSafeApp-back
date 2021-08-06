@@ -51,8 +51,8 @@ class Router
     public function loadController($uri, $method)
     {
         if (array_key_exists($uri, $this->routes[$method])) {
-            if (array_key_exists($uri, $this->authenticatedRoutes[$method]) && !$this->guard()) {
-                return redirect('/login');
+            if (array_key_exists($uri, $this->authenticatedRoutes[$method]) && !$this->guard() && $this->adminGuard() != 'admin') {
+                return redirect('/');
             }
 
             $value = $this->routes[$method][$uri];
@@ -72,4 +72,8 @@ class Router
         return ($_SESSION['user']);
     }
 
+    public function adminGuard()
+    {
+        return ($_SESSION['user']['role']);
+    }
 }
