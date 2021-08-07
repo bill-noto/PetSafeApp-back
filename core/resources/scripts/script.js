@@ -30,7 +30,7 @@ $('#overlay').on('click', function () {
 // Form validation
 function verify() {
     var n = $('#service_id').val();
-    var e = $('#for').val();
+    var e = $('#client').val();
     var d = $('#date').val();
     var t = $('#time').val();
     var h = $('#plc');
@@ -40,6 +40,9 @@ function verify() {
         h.text('ERROR');
         p.text('All fields are required.')
     } else {
+        h.addClass(['font-semibold', 'text-lg']);
+        h.text('SUCCESS');
+        p.text('You may create the log.')
         $('#submission').addClass('hidden');
         $('#submit').removeClass('hidden');
     }

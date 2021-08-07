@@ -13,9 +13,9 @@ class LogsControllerUser
 
     public function index()
     {
-        $books = App::get('db')->selectJoin('books', 'authors', 'name', 'author_id', 'author_name');
+        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
 
-        return view('books-index', compact('books'));
+        return view('logs-user-index', compact('logs'));
     }
 
 }

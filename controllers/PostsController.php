@@ -8,57 +8,67 @@ class PostsController
 {
 
     /**
-     * List all books
+     * List all logs
      */
 
     public function index()
     {
-        $books = App::get('db')->selectJoin('books', 'authors', 'name', 'author_id', 'author_name');
+        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
 
-        return view('books-index', compact('books'));
+        return view('logs-index', compact('logs'));
+    }
+
+    public function indexPast()
+    {
+        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
+
+        return view('logs-index-past', compact('logs'));
     }
 
     public function create()
     {
-        $authors =  App::get('db')->selectAll('authors');
+        $services =  App::get('db')->selectAll('services');
 
-        return view('books-create', compact('authors'));
+        return view('logs-create', compact('services'));
     }
 
     public function store()
     {
-        //TODO: Do some validation and sanitization before storing
+        $log = $_POST;
 
-        App::get('db')->insert('books', $_POST);
+        $log['date_requested'] = strtotime($log['date_requested']);
 
-        return redirect('/books');
+        App::get('db')->insert('logs', $log);
+
+        return redirect('/admin/logs');
     }
 
     public function edit()
     {
-        $book = App::get('db')->select('books', $_GET);
+        $log = App::get('db')->select('logs', $_GET);
+        $services =  App::get('db')->selectAll('services');
 
-
-        return view('books-edit', compact('book'));
+        return view('logs-edit', compact('log', 'services'));
     }
 
 
     public function update()
     {
-        //TODO: Do some validation and sanitization before storing
-        App::get('db')->update('books', $_POST);
+        $log = $_POST;
 
-        return redirect('/books');
+        $log['date_requested'] = strtotime($log['date_requested']);
+
+        App::get('db')->update('logs', $log);
+
+        return redirect('/admin/logs');
     }
 
     public function destroy()
     {
-        //TODO: Ask user are they sure before delete
-        App::get('db')->delete('books', $_GET);
+        App::get('db')->delete('logs', $_GET);
 
-        return redirect('/books');
+        return redirect('/admin/logs');
     }
-
 
 }
 

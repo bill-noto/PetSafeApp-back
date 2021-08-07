@@ -46,22 +46,25 @@ class LogsControllerAdmin
     public function edit()
     {
         $log = App::get('db')->select('logs', $_GET);
+        $services =  App::get('db')->selectAll('services');
 
-        return view('logs-edit', compact('log'));
+        return view('logs-edit', compact('log', 'services'));
     }
 
 
     public function update()
     {
-        //TODO: Do some validation and sanitization before storing
-        App::get('db')->update('logs', $_POST);
+        $log = $_POST;
+
+        $log['date_requested'] = strtotime($log['date_requested']);
+
+        App::get('db')->update('logs', $log);
 
         return redirect('/admin/logs');
     }
 
     public function destroy()
     {
-        //TODO: Ask user are they sure before delete
         App::get('db')->delete('logs', $_GET);
 
         return redirect('/admin/logs');

@@ -32,14 +32,12 @@
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $log->date_requested) ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->time_requested ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->service ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->for ?></td>
+                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->client ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->extra_information ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $log->amount_in ?>.00</td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><a
                                     class="underline hover:text-blue-900"
                                     href="/admin/logs/edit?id=<?= $log->id ?>">Edit</a>
-                            <a class="underline hover:text-red-900"
-                               href="/admin/logs/delete?id=<?= $log->id ?>">Delete</a>
                         </td>
                     </tr>
                 <?php endif; ?>
@@ -67,7 +65,7 @@
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">For: </h1>
-                            <p class="inline-block"><?= $log->for ?></p>
+                            <p class="inline-block"><?= $log->client ?></p>
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">Details: </h1>
@@ -81,9 +79,8 @@
                             <h1 class="inline-block">Actions: </h1>
                             <p class="inline-block"><a
                                         class="underline hover:text-blue-900"
-                                        href="/logs/edit?id=<?= $log->id ?>">Edit</a>
-                                <a class="underline hover:text-red-900"
-                                   href="/logs/delete?id=<?= $log->id ?>">Delete</a></p>
+                                        href="/admin/logs/edit?id=<?= $log->id ?>">Edit</a>
+                            </p>
                         </div>
                         <div>
                             <hr class="border border-black mt-2">

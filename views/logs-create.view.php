@@ -23,8 +23,8 @@
                         </div>
 
                         <div class="w-full">
-                            <label for="for">For:</label>
-                            <input type="text" name="for" id="for" class="px-1.5 mx-2.5 w-full sm:block mb-3">
+                            <label for="client">For:</label>
+                            <input type="text" name="client" id="client" class="px-1.5 mx-2.5 w-full sm:block mb-3">
                         </div>
 
                         <div class="w-full">
@@ -41,7 +41,7 @@
 
                         <div class="w-full">
                             <label for="extra_information">Details: </label>
-                            <input type="text" name="extra_information" id="extra_information"
+                            <input type="text" name="extra_information" id="extra_information" value="-"
                                    class="px-1.5 mx-2.5 w-full sm:block mb-3">
                         </div>
 

@@ -5,7 +5,7 @@
 <div class="h-2/4 py-8 bg-gradient-to-b from-black to-grey-200">
     <div class="xl:w-4/5 xl:mx-auto">
         <div class="text-center text-white mb-8 mx-8">
-            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are the past logs.</h1>
+            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are due.</h1>
         </div>
     </div>
     <div class="xl:flex justify-around h-auto xl:mx-auto">
@@ -27,17 +27,19 @@
             </thead>
             <tbody class="border border-black">
             <?php foreach ($logs as $log) : ?>
-                <?php if ($log->complete) : ?>
+                <?php if (!$log->complete) : ?>
                     <tr class="border border-black">
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $log->date_requested) ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->time_requested ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->service ?></td>
-                            <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->client ?></td>
+                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->client ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->extra_information ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $log->amount_in ?>.00</td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><a
                                     class="underline hover:text-blue-900"
                                     href="/admin/logs/edit?id=<?= $log->id ?>">Edit</a>
+                            <a class="underline hover:text-red-900"
+                               href="/admin/logs/delete?id=<?= $log->id ?>">Delete</a>
                         </td>
                     </tr>
                 <?php endif; ?>
@@ -48,15 +50,17 @@
         <div id="dueSmall" class="hidden sm:block">
             <div class=" bg-white border rounded mx-auto w-5/6">
                 <?php foreach ($logs as $log) : ?>
-                    <?php if ($log->complete) : ?>
+                    <?php if (!$log->complete) : ?>
                         <div class="p-0.5 mt-2">
                             <h1 class="inline-block">Date: </h1>
                             <p class="inline-block"><?= date('D d-m-Y', $log->date_requested) ?></p>
                         </div>
+
                         <div class="p-0.5 mt-2">
                             <h1 class="inline-block">Time: </h1>
                             <p class="inline-block"><?= $log->time_requested ?></p>
                         </div>
+
                         <div class="p-0.5">
                             <h1 class="inline-block">Service: </h1>
                             <p class="inline-block"><?= $log->service ?></p>
@@ -77,7 +81,9 @@
                             <h1 class="inline-block">Actions: </h1>
                             <p class="inline-block"><a
                                         class="underline hover:text-blue-900"
-                                        href="/admin/logs/edit?id=<?= $log->id ?>">Edit</a>
+                                        href="/logs/edit?id=<?= $log->id ?>">Edit</a>
+                                <a class="underline hover:text-red-900"
+                                   href="/logs/delete?id=<?= $log->id ?>">Delete</a></p>
                         </div>
                         <div>
                             <hr class="border border-black mt-2">
@@ -96,8 +102,9 @@
                     a Log</a>
             </div>
             <div class="text-center m-3">
-                <a href="/admin/logs"
-                   class="bg-white mx-auto block transform transition-all hover:bg-gray-200 hover:scale-125 border border-black p-2">Logs</a>
+                <a href="/admin/logs/past"
+                   class="bg-white mx-auto block transform transition-all hover:bg-gray-200 hover:scale-125 border border-black p-2">Past
+                    Logs</a>
             </div>
             <div class="text-center m-3">
                 <a href="/admin/posts"
