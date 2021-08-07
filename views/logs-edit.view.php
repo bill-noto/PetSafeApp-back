@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="w-full">
-                            <p for="complete">Complete: </p>
+                            <p>Complete: </p>
                             <label for="notComplete">No </label>
                             <input type="checkbox" id="notComplete" value="0" name="complete"
                                    class="px-1.5 mx-1.5 sm:mx-auto sm:block mb-3">

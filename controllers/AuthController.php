@@ -44,7 +44,9 @@ class AuthController
 
         App::get('db')->insert('users', $user);
 
-        Mail::send($user['email'], 'Welcome', 'From the staff at PetSafe.com, we welcome you, and hope you find our services enjoyable and secure, for you and your pet.');
+        Mail::send($user['email'], 'Thank you & Welcome', 'Greetings ' . $user['first_name'] .
+            'Thank you for choosing PetSafe! From all the staff here at PetSafe.com, we welcome you, and hope you find our services enjoyable and secure, for you and your pet.
+        PetSafe');
 
         return redirect('/');
     }
@@ -84,9 +86,9 @@ class AuthController
         $_SESSION['user'] = $user;
 
         if ($user->role == 'admin') {
-            return redirect('admin/logs');
+            return redirect('/admin/logs');
         }
-        return redirect('user/logs');
+        return redirect('/user/logs');
     }
 
     public function logout()

@@ -8,66 +8,50 @@ class PostsController
 {
 
     /**
-     * List all logs
+     * List all posts
      */
 
     public function index()
     {
-        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
+        $posts = App::get('db')->selectJoin('posts', 'users', 'first_name', 'user_id', 'author', 'last_name');
 
-        return view('logs-index', compact('logs'));
-    }
-
-    public function indexPast()
-    {
-        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
-
-        return view('logs-index-past', compact('logs'));
+        return view('posts-index', compact('posts'));
     }
 
     public function create()
     {
-        $services =  App::get('db')->selectAll('services');
+        $authors =  App::get('db')->selectAll('users');
 
-        return view('logs-create', compact('services'));
+        return view('posts-create', compact('authors'));
     }
 
     public function store()
     {
-        $log = $_POST;
+        App::get('db')->insert('posts', $_POST);
 
-        $log['date_requested'] = strtotime($log['date_requested']);
-
-        App::get('db')->insert('logs', $log);
-
-        return redirect('/admin/logs');
+        return redirect('/admin/posts');
     }
 
     public function edit()
     {
-        $log = App::get('db')->select('logs', $_GET);
+        $post = App::get('db')->select('posts', $_GET);
         $services =  App::get('db')->selectAll('services');
 
-        return view('logs-edit', compact('log', 'services'));
+        return view('posts-edit', compact('post', 'services'));
     }
-
 
     public function update()
     {
-        $log = $_POST;
+        App::get('db')->update('posts', $_POST);
 
-        $log['date_requested'] = strtotime($log['date_requested']);
-
-        App::get('db')->update('logs', $log);
-
-        return redirect('/admin/logs');
+        return redirect('/admin/posts');
     }
 
     public function destroy()
     {
-        App::get('db')->delete('logs', $_GET);
+        App::get('db')->delete('posts', $_GET);
 
-        return redirect('/admin/logs');
+        return redirect('/admin/posts');
     }
 
 }
