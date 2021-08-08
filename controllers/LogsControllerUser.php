@@ -13,7 +13,7 @@ class LogsControllerUser
 
     public function index()
     {
-        $logs = App::get('db')->select('logs', $_SESSION['user']['first_name']);
+        $logs = App::get('db')->select('logs', $_SESSION['user']['first_name']->first_name);
 
         return view('logs-user-index', compact('logs'));
     }

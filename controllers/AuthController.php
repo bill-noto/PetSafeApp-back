@@ -44,9 +44,7 @@ class AuthController
 
         App::get('db')->insert('users', $user);
 
-        Mail::send($user['email'], 'Thank you & Welcome', 'Greetings ' . $user['first_name'] .
-            'Thank you for choosing PetSafe! From all the staff here at PetSafe.com, we welcome you, and hope you find our services enjoyable and secure, for you and your pet.
-        PetSafe');
+        Mail::send($user['email'], 'Thank you & Welcome', 'Greetings ' . $user['first_name'] . ",\n\nThank you for choosing PetSafe! From all the staff here at PetSafe.com, we welcome you, and hope you find our services enjoyable and secure, for you and your pet. \n\nThe PetSafe Team");
 
         return redirect('/');
     }

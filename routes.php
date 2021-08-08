@@ -46,4 +46,4 @@ $router->get('user/logs', 'LogsControllerUser@index', 'auth');
  *
  */
 
-$router->get('api/books', 'ApiBooksController@index');
+$router->get('api/posts', 'ApiPostsController@index');
