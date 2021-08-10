@@ -21,7 +21,7 @@ npm install
 ### Database configuration
 
 Use .sql file in the Docs folder of the project to download the database in its current state. The Docs also contains a
-README-DB, to help understand the process of creating the database.
+README-DB, to help understand the process of creating the database, and a .pdf diagram of the tables and their relations.
 
 Import into whatever database manipulator you prefer (tableplus, or any other), and finish configuration through the
 config.php file in the root, if necessary. 
