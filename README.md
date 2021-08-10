@@ -4,7 +4,7 @@
 
 Done with PHP and implementing tailwindcss. This is the back end to a bigger project. The front end can be found here:
 
-https://github.com/SAEBelgradeWeb/wbd5204_1-final-project-bill-noto/tree/main.
+https://github.com/bill-noto/PetSafeApp-front.
 
 Final project year 1 Web Development, SAE Belgrade, 2021.
 
