@@ -5,7 +5,8 @@
 <div class="h-2/4 xl:h-screen py-8 bg-gradient-to-b from-black to-grey-200">
     <div class="xl:w-4/5 xl:mx-auto">
         <div class="text-center text-white mb-8 mx-8">
-            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are the past logs.</h1>
+            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are the past
+                logs.</h1>
         </div>
     </div>
     <div class="xl:flex justify-around h-auto xl:mx-auto">
@@ -32,7 +33,7 @@
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $log->date_requested) ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->time_requested ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->service ?></td>
-                            <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->client ?></td>
+                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->first_name ?> <?= $log->last_name ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->extra_information ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $log->amount_in ?>.00</td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><a
@@ -63,7 +64,7 @@
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">For: </h1>
-                            <p class="inline-block"><?= $log->client ?></p>
+                            <p class="inline-block"><?= $log->first_name ?> <?= $log->last_name ?></p>
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">Details: </h1>
@@ -97,7 +98,8 @@
             </div>
             <div class="text-center m-3">
                 <a href="/admin/logs"
-                   class="bg-white mx-auto block transform transition-all hover:bg-gray-200 hover:scale-125 border border-black p-2">Due Logs</a>
+                   class="bg-white mx-auto block transform transition-all hover:bg-gray-200 hover:scale-125 border border-black p-2">Due
+                    Logs</a>
             </div>
             <div class="text-center m-3">
                 <a href="/admin/posts"

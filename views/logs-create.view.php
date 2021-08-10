@@ -23,8 +23,13 @@
                         </div>
 
                         <div class="w-full">
-                            <label for="client">For:</label>
-                            <input type="text" name="client" id="client" class="px-1.5 mx-2.5 w-full sm:block mb-3">
+                            <label for="user_id">Client:</label>
+                            <select name="user_id" id="user_id"
+                                    class="px-1.5 mx-2.5 w-full sm:block mb-3 border border-black">
+                                <?php foreach ($users as $user) : ?>
+                                    <option value="<?= $user->id ?>"><?= $user->email ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <div class="w-full">

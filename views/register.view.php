@@ -51,7 +51,8 @@
                 </div>
 
                 <div class="w-full">
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password (required)"
+                    <input type="password" name="confirm_password" id="confirm_password"
+                           placeholder="Confirm Password (required)"
                            class="px-1.5 mx-2.5 w-full sm:block mb-3">
                 </div>
 

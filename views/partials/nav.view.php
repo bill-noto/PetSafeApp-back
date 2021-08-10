@@ -42,6 +42,7 @@
         <li class="hover:underline bg-transparent p-2">
             <a class="w-full" href="http://localhost:8080/#/about">ABOUT</a>
         </li>
-        <li class="hover:underline bg-transparent p-2"><a class="w-full" href="http://fp-petsafeapp-back.test">LOGIN/REGISTER</a></li>
+        <li class="hover:underline bg-transparent p-2"><a class="w-full" href="http://fp-petsafeapp-back.test">LOGIN/REGISTER</a>
+        </li>
     </ul>
 </header>

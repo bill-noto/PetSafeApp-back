@@ -8,12 +8,12 @@ class LogsControllerUser
 {
 
     /**
-     * List all logs
+     * List all logs from a specific user
      */
 
     public function index()
     {
-        $logs = App::get('db')->select('logs', $_SESSION['user']['first_name']->first_name);
+        $logs = App::get('db')->selectUserLog('logs', ['id' => $_SESSION['user']->id]);
 
         return view('logs-user-index', compact('logs'));
     }

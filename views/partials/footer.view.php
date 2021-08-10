@@ -30,7 +30,8 @@
                         </a>
                     </li>
                     <li class="pt-1.5 sm:pt-2.5 sm:text-center"><a
-                                class="sm:underline hover:underline" href="http://fp-petsafeapp-back.test">Login/Register</a></li>
+                                class="sm:underline hover:underline" href="http://fp-petsafeapp-back.test">Login/Register</a>
+                    </li>
                 </ul>
             </div>
             <div class="w-1/3 sm:w-full my-4 sm:my-6 md:mr-12 lg:mr-12">

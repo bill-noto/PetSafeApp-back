@@ -3,7 +3,8 @@
     <div class="h-2/4 py-10 bg-gradient-to-b from-black to-grey-200">
         <div class="xl:w-4/5 xl:mx-auto">
             <div class="text-center text-white mb-8 mx-8">
-                <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, editing <?= $post->title ?>.</h1>
+                <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>,
+                    editing <?= $post->title ?>.</h1>
             </div>
             <div class="w-4/5 lg:w-3/5 xl:w-3/5 bg-white border border-primary mx-auto p-4">
                 <div class="block text-center">
@@ -27,7 +28,7 @@
                         <div class="w-full">
                             <label for="body">Body: </label>
                             <textarea name="body" id="body"
-                                      class="px-1.5 mx-2.5 w-full sm:block mb-3" ><?= $post->body ?></textarea>
+                                      class="px-1.5 mx-2.5 w-full sm:block mb-3"><?= $post->body ?></textarea>
                         </div>
 
                         <div class="mt-3 mb-3">

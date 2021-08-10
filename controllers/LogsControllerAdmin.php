@@ -8,29 +8,43 @@ class LogsControllerAdmin
 {
 
     /**
-     * List all logs
+     * List all due logs
      */
 
     public function index()
     {
-        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
+        $logs = App::get('db')->selectJoin('logs', 'users', 'first_name', 'user_id', 'first_name', 'last_name', 'services', 'service', 'service', 'service_id');
 
         return view('logs-index', compact('logs'));
     }
 
+    /**
+     * List all pasts logs
+     */
+
     public function indexPast()
     {
-        $logs = App::get('db')->selectJoin('logs', 'services', 'service', 'service_id', 'service');
+        $logs = App::get('db')->selectJoin('logs', 'users', 'first_name', 'user_id', 'first_name', 'last_name', 'services', 'service', 'service', 'service_id');
 
         return view('logs-index-past', compact('logs'));
     }
 
+    /**
+     * Sends admin to the log creation page
+     */
+
     public function create()
     {
-        $services =  App::get('db')->selectAll('services');
+        $users = App::get('db')->selectAll('users');
 
-        return view('logs-create', compact('services'));
+        $services = App::get('db')->selectAll('services');
+
+        return view('logs-create', compact('services', 'users'));
     }
+
+    /**
+     * Stores information from create page into the database
+     */
 
     public function store()
     {
@@ -43,14 +57,24 @@ class LogsControllerAdmin
         return redirect('/admin/logs');
     }
 
+    /**
+     * Pulls specific information about a certain id from the database, and redirects to the edit page
+     */
+
     public function edit()
     {
         $log = App::get('db')->select('logs', $_GET);
-        $services =  App::get('db')->selectAll('services');
 
-        return view('logs-edit', compact('log', 'services'));
+        $users = App::get('db')->selectAll('users');
+
+        $services = App::get('db')->selectAll('services');
+
+        return view('logs-edit', compact('log', 'services', 'users'));
     }
 
+    /**
+     * Stores the updated log into the database
+     */
 
     public function update()
     {
@@ -62,6 +86,10 @@ class LogsControllerAdmin
 
         return redirect('/admin/logs');
     }
+
+    /**
+     * Deletes a specific log depending on the id sent through the 'get'
+     */
 
     public function destroy()
     {

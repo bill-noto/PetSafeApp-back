@@ -31,7 +31,7 @@
             <div class="xl:w-4/5 xl:mx-auto text-white">
                 <div class="text-center my-10 mx-8">
                     <h1 class="text-2xl sm:text-xl font-bold"><?= $post->title ?></h1>
-                    <h2 class="text-xl sm:text-xl font-bold"><?= $post->author ?>
+                    <h2 class="text-xl sm:text-xl font-bold"><?= $post->first_name ?> <?= $post->last_name ?>
                         , <?= $post->create_time ?></h2>
                     <p class="mt-4 w-4/5 mx-auto sm:text-sm"><?= $post->body ?></p>
                 </div>

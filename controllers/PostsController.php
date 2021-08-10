@@ -13,17 +13,25 @@ class PostsController
 
     public function index()
     {
-        $posts = App::get('db')->selectJoin('posts', 'users', 'first_name', 'user_id', 'author', 'last_name');
+        $posts = App::get('db')->selectJoin('posts', 'users', 'first_name', 'user_id', 'first_name', 'last_name');
 
         return view('posts-index', compact('posts'));
     }
 
+    /**
+     * Sends admin to the post creation page
+     */
+
     public function create()
     {
-        $authors =  App::get('db')->selectAll('users');
+        $authors = App::get('db')->selectAll('users');
 
         return view('posts-create', compact('authors'));
     }
+
+    /**
+     * Stores information from create page into the database
+     */
 
     public function store()
     {
@@ -32,13 +40,21 @@ class PostsController
         return redirect('/admin/posts');
     }
 
+    /**
+     * Pulls specific information about a certain id from the database, and redirects to the edit page
+     */
+
     public function edit()
     {
         $post = App::get('db')->select('posts', $_GET);
-        $services =  App::get('db')->selectAll('services');
+        $services = App::get('db')->selectAll('services');
 
         return view('posts-edit', compact('post', 'services'));
     }
+
+    /**
+     * Stores the updated post into the database
+     */
 
     public function update()
     {
@@ -46,6 +62,10 @@ class PostsController
 
         return redirect('/admin/posts');
     }
+
+    /**
+     * Deletes a specific post depending on the id sent through the 'get'
+     */
 
     public function destroy()
     {

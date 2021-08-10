@@ -5,7 +5,11 @@
 <div class="h-2/4 py-8 bg-gradient-to-b from-black to-grey-200">
     <div class="xl:w-4/5 xl:mx-auto">
         <div class="text-center text-white mb-8 mx-8">
-            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>.</h1>
+            <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are the dates
+                of your services, for further information, please call <a
+                        class="underline" href="tel:123-456-7890">(123) 456 - 7890</a>, or mail
+                <a class="underline" href="mailto: contact@petsafe.com">contact@petsafe.com</a>.
+            </h1>
         </div>
     </div>
     <div class="xl:flex justify-around h-auto xl:mx-auto">
@@ -18,56 +22,43 @@
             <tr class="border border-black">
                 <th class="border border-black p-6 md:p-3 sm:p-2">Date</th>
                 <th class="border border-black p-6 md:p-3 sm:p-2">Time</th>
-                <th class="border border-black p-6 md:p-3 sm:p-2">Service</th>
                 <th class="border border-black p-6 md:p-3 sm:p-2">Details</th>
                 <th class="border border-black p-6 md:p-3 sm:p-2">Amount in</th>
             </tr>
             </thead>
             <tbody class="border border-black">
-            <?php foreach ($logs as $log) : ?>
-                <?php if (!$log->complete) : ?>
-                    <tr class="border border-black">
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $log->date_requested) ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->time_requested ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->service ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->extra_information ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $log->amount_in ?>.00</td>
-                    </tr>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <tr class="border border-black">
+                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $logs->date_requested) ?></td>
+                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->time_requested ?></td>
+                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->extra_information ?></td>
+                <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $logs->amount_in ?>.00</td>
+            </tr>
             </tbody>
         </table>
 
         <div id="dueSmall" class="hidden sm:block">
             <div class=" bg-white border rounded mx-auto w-5/6">
-                <?php foreach ($logs as $log) : ?>
-                    <?php if (!$log->complete) : ?>
-                        <div class="p-0.5 mt-2">
-                            <h1 class="inline-block">Date: </h1>
-                            <p class="inline-block"><?= date('D d-m-Y', $log->date_requested) ?></p>
-                        </div>
-                        <div class="p-0.5 mt-2">
-                            <h1 class="inline-block">Time: </h1>
-                            <p class="inline-block"><?= $log->time_requested ?></p>
-                        </div>
 
-                        <div class="p-0.5">
-                            <h1 class="inline-block">Service: </h1>
-                            <p class="inline-block"><?= $log->service ?></p>
-                        </div>
-                        <div class="p-0.5">
-                            <h1 class="inline-block">Details: </h1>
-                            <p class="inline-block"><?= $log->extra_information ?></p>
-                        </div>
-                        <div class="p-0.5">
-                            <h1 class="inline-block">Amount In: </h1>
-                            <p class="inline-block">$<?= $log->amount_in ?>.00</p>
-                        </div>
-                        <div>
-                            <hr class="border border-black mt-2">
-                        </div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <div class="p-0.5 mt-2">
+                    <h1 class="inline-block">Date: </h1>
+                    <p class="inline-block"><?= date('D d-m-Y', $logs->date_requested) ?></p>
+                </div>
+                <div class="p-0.5 mt-2">
+                    <h1 class="inline-block">Time: </h1>
+                    <p class="inline-block"><?= $logs->time_requested ?></p>
+                </div>
+                <div class="p-0.5">
+                    <h1 class="inline-block">Details: </h1>
+                    <p class="inline-block"><?= $logs->extra_information ?></p>
+                </div>
+                <div class="p-0.5">
+                    <h1 class="inline-block">Amount In: </h1>
+                    <p class="inline-block">$<?= $logs->amount_in ?>.00</p>
+                </div>
+                <div>
+                    <hr class="border border-black mt-2">
+                </div>
+
             </div>
         </div>
     </div>

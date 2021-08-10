@@ -42,7 +42,7 @@ $router->get('user/logs', 'LogsControllerUser@index', 'auth');
 
 /**
  *
- * API routes
+ * API route
  *
  */
 

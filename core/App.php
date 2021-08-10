@@ -2,13 +2,22 @@
 
 namespace App\Core;
 
-class App {
-
+class App
+{
     public static $registry = [];
 
-    public static function set($key, $value) {
-       static::$registry[$key] = $value;
+    /*
+     * Set keys and values to the app class
+     */
+
+    public static function set($key, $value)
+    {
+        static::$registry[$key] = $value;
     }
+
+    /*
+     * Set get keys to the app class
+     */
 
     public static function get($key)
     {

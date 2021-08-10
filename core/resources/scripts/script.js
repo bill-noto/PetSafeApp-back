@@ -30,7 +30,7 @@ $('#overlay').on('click', function () {
 // Create validation logs
 function verify() {
     var n = $('#service_id').val();
-    var e = $('#client').val();
+    var e = $('#user_id').val();
     var d = $('#date').val();
     var t = $('#time').val();
     var h = $('#plc');
@@ -59,7 +59,7 @@ function verify2() {
     var b = $('#body').val();
     var h = $('#plc');
     var p = $('#plct');
-    if ( !t || !b) {
+    if (!t || !b) {
         h.addClass(['font-semibold', 'text-lg']);
         h.text('ERROR');
         p.text('Author, title & body are required.')

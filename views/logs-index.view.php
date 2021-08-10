@@ -32,7 +32,7 @@
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $log->date_requested) ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->time_requested ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->service ?></td>
-                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->client ?></td>
+                        <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->first_name ?> <?= $log->last_name ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $log->extra_information ?></td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $log->amount_in ?>.00</td>
                         <td class="border border-black text-center p-6 md:p-3 sm:p-2"><a
@@ -65,7 +65,7 @@
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">For: </h1>
-                            <p class="inline-block"><?= $log->client ?></p>
+                            <p class="inline-block"><?= $log->first_name ?> <?= $log->last_name ?></p>
                         </div>
                         <div class="p-0.5">
                             <h1 class="inline-block">Details: </h1>

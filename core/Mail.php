@@ -1,11 +1,16 @@
 <?php
+
 namespace App\Core;
 
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 
-class Mail {
+class Mail
+{
+    /*
+     * Send email to new user after successful register
+     */
 
     public static function send($to, $subject, $message)
     {
@@ -20,7 +25,7 @@ class Mail {
         $phpmailer->Password = $config['password'];
 
         $phpmailer->Subject = $subject;
-        $phpmailer->Body    = $message;
+        $phpmailer->Body = $message;
 
         $phpmailer->addAddress($to);
         $phpmailer->setFrom($config['from'], $config['from_name']);
@@ -29,6 +34,5 @@ class Mail {
         } catch (Exception $exception) {
             die($exception->getMessage());
         }
-
     }
 }

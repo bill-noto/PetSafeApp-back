@@ -8,12 +8,19 @@ use App\Core\Mail;
 
 class AuthController
 {
+    /**
+     * Redirect to registration form page
+     */
 
     public function showRegistrationForm()
     {
         $message = "";
         return view('register', compact('message'));
     }
+
+    /**
+     * Run a check of fields and register user to the database, sending custom email
+     */
 
     public function register()
     {
@@ -49,11 +56,19 @@ class AuthController
         return redirect('/');
     }
 
+    /**
+     * Redirect to login form
+     */
+
     public function showLoginForm()
     {
         $message = "";
         return view('login', compact('message'));
     }
+
+    /**
+     * Run check to see if user exists and password matches, then logs user in and saves the session
+     */
 
     public function login()
     {
@@ -88,6 +103,10 @@ class AuthController
         }
         return redirect('/user/logs');
     }
+
+    /**
+     * Destroys the session and logs user out
+     */
 
     public function logout()
     {

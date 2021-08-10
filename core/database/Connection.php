@@ -5,6 +5,11 @@ namespace App\Core\Database;
 
 class Connection
 {
+
+    /*
+     * Function to connect to the database, uses values from the config.php file
+     */
+
     public static function connectDB($db_config)
     {
         try {
