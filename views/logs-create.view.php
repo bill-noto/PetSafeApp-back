@@ -27,7 +27,9 @@
                             <select name="user_id" id="user_id"
                                     class="px-1.5 mx-2.5 w-full sm:block mb-3 border border-black">
                                 <?php foreach ($users as $user) : ?>
-                                    <option value="<?= $user->id ?>"><?= $user->email ?></option>
+                                    <?php if ($user->id > 3) : ?>
+                                        <option value="<?= $user->id ?>"><?= $user->email ?></option>
+                                    <?php endif ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
