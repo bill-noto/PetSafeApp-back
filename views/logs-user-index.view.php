@@ -27,12 +27,14 @@
             </tr>
             </thead>
             <tbody class="border border-black">
-            <tr class="border border-black">
-                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $logs->date_requested) ?></td>
-                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->time_requested ?></td>
-                <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->extra_information ?></td>
-                <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $logs->amount_in ?>.00</td>
-            </tr>
+            <?php if ($logs) : ?>
+                <tr class="border border-black">
+                    <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= date('D d-m-Y', $logs->date_requested) ?></td>
+                    <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->time_requested ?></td>
+                    <td class="border border-black text-center p-6 md:p-3 sm:p-2"><?= $logs->extra_information ?></td>
+                    <td class="border border-black text-center p-6 md:p-3 sm:p-2">$<?= $logs->amount_in ?>.00</td>
+                </tr>
+            <?php endif; ?>
             </tbody>
         </table>
 
