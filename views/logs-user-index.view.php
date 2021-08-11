@@ -2,7 +2,7 @@
 
 <!--Hero-->
 
-<div class="h-2/4 py-8 bg-gradient-to-b from-black to-grey-200">
+<div class="h-2/4 xl:h-screen py-8 bg-gradient-to-b from-black to-grey-200">
     <div class="xl:w-4/5 xl:mx-auto">
         <div class="text-center text-white mb-8 mx-8">
             <h1 class="text-2xl sm:text-xl font-bold">Welcome, <?= $_SESSION['user']->first_name ?>, these are the dates
